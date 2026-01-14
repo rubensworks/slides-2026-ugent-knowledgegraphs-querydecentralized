@@ -1,7 +1,7 @@
-# Slides for Knowledge Graphs course 2026 on Link Traversal Query Processing
-[![Build Status](https://github.com/rubensworks/slides-2026-ugent-knowledgegraphs-linktraversal/workflows/Build%20and%20Deploy/badge.svg)](https://rubensworks.github.io/slides-2026-ugent-knowledgegraphs-linktraversal/)
+# Slides for Knowledge Graphs course 2026 on Querying over Decentralized Data
+[![Build Status](https://github.com/rubensworks/slides-2026-ugent-knowledgegraphs-querydecentralized/workflows/Build%20and%20Deploy/badge.svg)](https://rubensworks.github.io/slides-2026-ugent-knowledgegraphs-querydecentralized/)
 
-**Live version: https://rubensworks.github.io/slides-2026-ugent-knowledgegraphs-linktraversal/**
+**Live version: https://rubensworks.github.io/slides-2026-ugent-knowledgegraphs-querydecentralized/**
 
 These slides are created using the [shower](https://github.com/shower/shower) framework.
 
