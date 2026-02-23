@@ -336,6 +336,7 @@ SELECT ?drug ?title WHERE {
 			</li>
 		</ul>
         <h3>Example of one iteration (block size 16):</h3>
+        <p class="indent" style="margin-top: -20px">Joining (?category) ⋈ (?category, ?drug, ?id)</p>
         <pre style="font-size: 0.75em">SELECT ?drug ?id WHERE {
    VALUES (?category) {
        db:drugCategory1 db:drugCategory2 db:drugCategory3 db:drugCategory4
@@ -552,8 +553,8 @@ SELECT ?drug ?title WHERE {
         <em>That do not exist in centralized querying</em>
 		<ul>
 			<li>
-                <h3>Slow link queue blocks execution</h3>
-                <span class="indent">Following a link is expensive</span>
+                <h3>Link queue iteration blocks evaluation</h3>
+                <span class="indent">Following links is expensive</span>
 			</li>
 			<li>
                 <h3>Number of links can become very large</h3>
@@ -567,7 +568,7 @@ SELECT ?drug ?title WHERE {
     </section>
     
     <section id="iterator-pipeline" class="slide" inlist="" rel="schema:hasPart" resource="#iterator-pipeline">
-        <h2 property="schema:name">Slow link queue blocks execution</h2>
+        <h2 property="schema:name">Link queue iteration blocks evaluation</h2>
         <img src="img/pipeline.svg" width="29%" style="float: right" />
         <h3>&rarr; Process query <em>during</em> link queue handling</h3>
 		<ul>
@@ -648,24 +649,6 @@ SELECT ?drug ?title WHERE {
                 <h3>No ontologies</h3>
                 <span class="indent">Triple patterns for well-known ontologies (e.g. <code>rdf:type</code>) are deprioritized</span><br />
                 <span class="indent">These often produce <em>many</em> results</span>
-			</li>
-		</ul>
-    </section>
-    
-    <section id="problem-slow" class="slide" inlist="" rel="schema:hasPart" resource="#problem-slow">
-        <h2 property="schema:name">Slow query execution</h2>
-		<ul>
-			<li>
-                <h3>Large number of links to follow</h3>
-                <span class="indent">Fetching all documents on the Web is not practical</span>
-			</li>
-			<li>
-                <h3>Following links is expensive</h3>
-                <span class="indent">Setting up many TCP connections for doing HTTP requests takes time</span>
-			</li>
-			<li>
-                <h3>No indexing</h3>
-                <span class="indent">Query planning is based on heuristics</span>
 			</li>
 		</ul>
     </section>
