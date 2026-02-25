@@ -290,6 +290,48 @@ SELECT ?drug ?title WHERE {
 		</ul>
     </section>
     
+    <section id="exhaustive-source-selection" class="slide" inlist="" rel="schema:hasPart" resource="#exhaustive-source-selection">
+        <h2 property="schema:name">Exhaustive source selection (worst-case)</h2>
+		<ul>
+			<li>
+				<h3>Wrap each triple pattern into UNIONs of SERVICEs</h3>
+				<span class="indent">To ensure completeness</span>
+			</li>
+		</ul>
+        <div>
+        <pre style="font-size: 0.6em; float: left; margin-right: 15px; width: 400px; height: 250px"># Source 1: http://example.com/drb
+# Source 2: http://example.com/kegg
+
+SELECT ?drug ?title WHERE {
+   ?drug db:drugCategory dbc:micronutrient.
+   ?drug db:casRegistryNumber ?id.
+}
+        </pre>
+        <pre style="font-size: 0.6em">
+SELECT ?drug ?title WHERE {
+  {
+    SERVICE &lt;http://example.com/drb&gt; {
+      ?drug db:drugCategory dbc:micronutrient.
+    }
+  } UNION {
+    SERVICE &lt;http://example.com/kegg&gt; {
+      ?drug db:drugCategory dbc:micronutrient.
+    }  
+  }
+  {
+    SERVICE &lt;http://example.com/drb&gt; {
+      ?drug db:casRegistryNumber ?id.
+    }
+  } UNION {
+    SERVICE &lt;http://example.com/kegg&gt; {
+      ?drug db:casRegistryNumber ?id.
+    }  
+  }
+ }
+</pre>
+        </div>
+    </section>
+    
     <section id="exclusive-groups" class="slide" inlist="" rel="schema:hasPart" resource="#exclusive-groups">
         <h2 property="schema:name">Identifying exclusive groups</h2>
 		<ul>
@@ -704,6 +746,37 @@ SELECT ?drug ?title WHERE {
 		</ul>
     </section>
     
+    <section id="index-final" class="slide index" inlist="" rel="schema:hasPart" resource="#index-final">
+      <ul>
+        <li><a href="#index-querying">Querying over decentralized data</a></li>
+        <li><a href="#index-federated">Federated Querying</a></li>
+		<li><a href="#index-linktraversal">Link Traversal</a></li>
+      </ul>
+    </section>
+	
+    <section id="conclusion" class="slide" inlist="" rel="schema:hasPart" resource="#conclusion">
+      <h2 property="schema:name">Conclusions</h2>
+	<ul>
+		<li>
+              <h3>Query engines can integrating decentralized data</h3>
+              <span class="indent">Abstract away complexities of decentralized data</span>
+		</li>
+		<li>
+              <h3>Trade-offs between federated querying and link traversal</h3>
+              <span class="indent">Federation faster, but lacks source discovery and limited in #sources</span><br \>
+              <span class="indent">Link traversal currently only works over documents</span><br \>
+              <span class="indent">Need for a hybrid between federation and link traversal?</span>
+		</li>
+		<li>
+              <h3>You can become a pioneer in this domain!</h3>
+              <span class="indent">IDLab is doing research on Link Traversal</span><br />
+              <span class="indent">We offer student jobs, master theses, PhD jobs</span>
+		</li>
+	</ul>
+    </section>
+    
+    <section id="backup" class="slide" inlist="" rel="schema:hasPart" resource="#backup"></section>
+    
     <section id="link-traversal-results" class="slide" inlist="" rel="schema:hasPart" resource="#link-traversal-results">
       <h2 property="schema:name" style="font-size: 1.9em">Query results arrive incrementally<br \>within human attention limits</h2>
       <center>
@@ -746,35 +819,6 @@ SELECT ?drug ?title WHERE {
               <span class="indent">Dangers: staleness, trust, censorship, &mldr;</span>
           </li>
       </ul>
-    </section>
-    
-    <section id="index-final" class="slide index" inlist="" rel="schema:hasPart" resource="#index-final">
-      <ul>
-        <li><a href="#index-querying">Querying over decentralized data</a></li>
-        <li><a href="#index-federated">Federated Querying</a></li>
-		<li><a href="#index-linktraversal">Link Traversal</a></li>
-      </ul>
-    </section>
-	
-    <section id="conclusion" class="slide" inlist="" rel="schema:hasPart" resource="#conclusion">
-      <h2 property="schema:name">Conclusions</h2>
-	<ul>
-		<li>
-              <h3>Query engines can integrating decentralized data</h3>
-              <span class="indent">Abstract away complexities of decentralized data</span>
-		</li>
-		<li>
-              <h3>Trade-offs between federated querying and link traversal</h3>
-              <span class="indent">Federation faster, but lacks source discovery and limited in #sources</span><br \>
-              <span class="indent">Link traversal currently only works over documents</span><br \>
-              <span class="indent">Need for a hybrid between federation and link traversal?</span>
-		</li>
-		<li>
-              <h3>You can become a pioneer in this domain!</h3>
-              <span class="indent">IDLab is doing research on Link Traversal</span><br />
-              <span class="indent">We offer student jobs, master theses, PhD jobs</span>
-		</li>
-	</ul>
     </section>
 
     <footer>
